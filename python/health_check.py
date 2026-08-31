@@ -1,3 +1,4 @@
+import json
 import random
 from datetime import datetime
 
@@ -22,24 +23,27 @@ def get_status(value, warning=70, critical=90):
     return "HEALTHY"
 
 
-def main():
-    cpu = check_cpu()
-    memory = check_memory()
-    disk = check_disk()
+cpu = check_cpu()
+memory = check_memory()
+disk = check_disk()
 
-    print("=" * 50)
-    print("AWS ENVIRONMENT SUPPORT LAB")
-    print("=" * 50)
-    print(f"Timestamp : {datetime.now()}")
-    print()
+report = {
+    "timestamp": datetime.now().isoformat(),
+    "cpu": {
+        "value": cpu,
+        "status": get_status(cpu)
+    },
+    "memory": {
+        "value": memory,
+        "status": get_status(memory)
+    },
+    "disk": {
+        "value": disk,
+        "status": get_status(disk)
+    }
+}
 
-    print(f"CPU Usage     : {cpu}% [{get_status(cpu)}]")
-    print(f"Memory Usage  : {memory}% [{get_status(memory)}]")
-    print(f"Disk Usage    : {disk}% [{get_status(disk)}]")
-    print()
+with open("health_report.json", "w") as file:
+    json.dump(report, file, indent=4)
 
-    print("Health Check Completed")
-
-
-if __name__ == "__main__":
-    main()
+print("Health report generated successfully.")
