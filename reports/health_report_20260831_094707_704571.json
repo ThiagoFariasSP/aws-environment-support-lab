@@ -1,0 +1,15 @@
+{
+    "timestamp": "2026-08-31T09:47:07.704546",
+    "cpu": {
+        "value": 78,
+        "status": "WARNING"
+    },
+    "memory": {
+        "value": 23,
+        "status": "HEALTHY"
+    },
+    "disk": {
+        "value": 33,
+        "status": "HEALTHY"
+    }
+}

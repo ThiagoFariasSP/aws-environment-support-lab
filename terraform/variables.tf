@@ -5,16 +5,19 @@ variable "aws_region" {
 }
 
 variable "availability_zone" {
-  description = "Availability zone for resources"
+  description = "Primary availability zone"
   type        = string
   default     = "us-east-1a"
 }
+
 variable "db_username" {
-  type      = string
-  sensitive = true
+  description = "Database username"
+  type        = string
+  sensitive   = true
 }
 
 variable "db_password" {
-  type      = string
-  sensitive = true
+  description = "Database password"
+  type        = string
+  sensitive   = true
 }

@@ -42,10 +42,9 @@ report = {
         "status": get_status(disk)
     }
 }
+filename = f"reports/health_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
 
-filename = f"reports/health_report_{datetime.now().strftime('%Y%m%d_%H%M%S_%f')}.json"
-
-with open(filename, "w") as file:
+with open("health_report.json", "w") as file:
     json.dump(report, file, indent=4)
 
 print(f"Health report generated: {filename}")
